@@ -858,7 +858,7 @@ namespace RoyalCrypto
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
             if (connect.State != ConnectionState.Open)
                 connect.Open();
-            SqlCommand cmd = new SqlCommand("insert into UserOrderPay (UserId, FUT_Id, FUAC_Id, Image) values('" + uop.UserId + "','" + uop.FUT_Id + "','" + uop.FUAC_Id + "','" + uop.Image + "')", connect);
+            SqlCommand cmd = new SqlCommand("insert into UserOrderPay (UserId, FUT_Id, FORD_Id, FUAC_Id, Image) values('" + uop.UserId + "','" + uop.FUT_Id + "','"+uop.FORD_Id+"','" + uop.FUAC_Id + "','" + uop.Image + "')", connect);
             try
             {
                 SqlCommand query = new SqlCommand("select fuac_id from usertrades where ut_id = '" + uop.FUT_Id + "' ", connect);
