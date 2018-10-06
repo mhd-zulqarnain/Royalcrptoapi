@@ -366,7 +366,7 @@ namespace RoyalCrypto
     [DataContract]
     public class UserOrderPay
     {
-        public string uop_id, user_id, fut_id, fuac_id, image;
+        public string uop_id, user_id, fut_id, ford_id, fuac_id, image;
 
         [DataMember]
         public string UOP_Id
@@ -387,6 +387,12 @@ namespace RoyalCrypto
             set { fut_id = value; }
         }
         [DataMember]
+        public string FORD_Id
+        {
+            get { return ford_id; }
+            set { ford_id = value; }
+        }
+        [DataMember]
         public string FUAC_Id
         {
             get { return fuac_id; }
@@ -399,12 +405,13 @@ namespace RoyalCrypto
             set { image = value; }
         }
 
-        public UserOrderPay(string Uop_id, string User_id, string Fut_id, string Fuac_id, string Image)
+        public UserOrderPay(string Uop_id, string User_id, string Fut_id, string Ford_id, string Fuac_id, string Image)
         {
 
             uop_id = Uop_id;
             user_id = User_id;
             fut_id = Fut_id;
+            ford_id = Ford_id;
             fuac_id = Fuac_id;
             image = Image;
 
