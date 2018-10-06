@@ -62,6 +62,7 @@ D:\API\RoyalCrypto\bin\normnfc.nlp
 D:\API\RoyalCrypto\bin\normnfd.nlp
 D:\API\RoyalCrypto\bin\normnfkc.nlp
 D:\API\RoyalCrypto\bin\normnfkd.nlp
-D:\API\RoyalCrypto\obj\Debug\RoyalCrypto.csprojResolveAssemblyReference.cache
 D:\API\RoyalCrypto\obj\Debug\RoyalCrypto.dll
 D:\API\RoyalCrypto\obj\Debug\RoyalCrypto.pdb
+D:\API\RoyalCrypto\bin\RoyalCrypto.dll.CodeAnalysisLog.xml
+D:\API\RoyalCrypto\bin\RoyalCrypto.dll.lastcodeanalysissucceeded

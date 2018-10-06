@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="d:\visual\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="11.0">
+ <Targets>
+  <Target Name="D:\API\RoyalCrypto\bin\RoyalCrypto.dll">
+   <Modules>
+    <Module Name="royalcrypto.dll">
+     <Namespaces>
+      <Namespace Name="RoyalCrypto">
+       <Types>
+        <Type Name="Service1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Add_SupportTicket(RoyalCrypto.SupportTicket)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="516">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Add_SupportTicket(SupportTicket)' could contain the following variables 'st.Title', 'st.Description', 'st.Image', 'st.FUAC_Id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Add_UserAccount(System.String,System.String,System.String,System.String,System.String,System.String,System.String,RoyalCrypto.Verification)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="221">Object 'connect' can be disposed more than once in method 'Service1.Add_UserAccount(string, string, string, string, string, string, string, Verification)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 221</Issue>
+             <Issue Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="208">Object 'reader' can be disposed more than once in method 'Service1.Add_UserAccount(string, string, string, string, string, string, string, Verification)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 208</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="178">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Add_UserAccount(string, string, string, string, string, string, string, Verification)' could contain the following variables 'email'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="212">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Add_UserAccount(string, string, string, string, string, string, string, Verification)' could contain the following variables 'fname', 'lname', 'email', 'phone', 'sb', 'this.encryptpass(password)', 'cnic', 'dob', 'new string[21][17]', 'fcm.message'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Add_UserChat(System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1333">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Add_UserChat(string, string, string)' could contain the following variables 'Convert.ToInt32(fut_id)', 'Convert.ToInt32(fuac_id)', 'message'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Add_UserDocument(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1426">Object 'connect' can be disposed more than once in method 'Service1.Add_UserDocument(string, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1426</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1410">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Add_UserDocument(string, string)' could contain the following variables 'Convert.ToInt32(FUAC_id)', 'UserDocument'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Add_UserOrder(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1262">Object 'connect' can be disposed more than once in method 'Service1.Add_UserOrder(string, string, string, string, string, string, string, string, string, string, string, string, string, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1262</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1233">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Add_UserOrder(string, string, string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables 'Amount', 'fut_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1238">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Add_UserOrder(string, string, string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables 'userid'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1220">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Add_UserOrder(string, string, string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables 'userid', 'ord_userid', 'fuac_id', 'Convert.ToInt32(fut_id)', 'price', 'amount', 'payment_method', 'upperlimit', 'lowerlimit', 'bitamount', 'bitprice', 'status', 'CS$0$0002.ToString("dd-MM-yyyy HH:mm:ss")', 'CS$0$0002.ToString("dd-MM-yyyy HH:mm:ss")', 'description', 'notify_status'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Add_UserPaymentDetail(System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1293">Object 'connect' can be disposed more than once in method 'Service1.Add_UserPaymentDetail(string, string, string, string, string, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1293</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1274">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Add_UserPaymentDetail(string, string, string, string, string, string)' could contain the following variables 'Convert.ToInt32(fuac_id)', 'type', 'account', 'account_title', 'bankname', 'Bankcode'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Add_UserTrades(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="667">Object 'connect' can be disposed more than once in method 'Service1.Add_UserTrades(string, string, string, string, string, string, string, string, string, string, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 667</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="651">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Add_UserTrades(string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables 'Convert.ToInt32(fuacid)', 'ordertype', 'Convert.ToInt32(fupid)', 'amnt', 'exec_amount', 'exec_fees', 'pric', 'fes', 'uplimit', 'lowlimit', 'currencytyp', 'CS$0$0002.ToString("dd-MM-yyyy HH:mm:ss")'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Delete_UserPaymentDetail(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1453">Object 'connect' can be disposed more than once in method 'Service1.Delete_UserPaymentDetail(string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1453</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#forgot_pass(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="83">Object 'connect' can be disposed more than once in method 'Service1.forgot_pass(string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 83</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="65">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.forgot_pass(string)' could contain the following variables 'Email'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#getupid(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1069">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.getupid(string)' could contain the following variables 'ut_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#irelease(System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="161">Object 'connect' can be disposed more than once in method 'Service1.irelease(string, string, string, string, string, string, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 161</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="133">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.irelease(string, string, string, string, string, string, string)' could contain the following variables 'base.ToString()', 'ord_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="141">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.irelease(string, string, string, string, string, string, string)' could contain the following variables 'minusvalue', 'bitamt', 'ut_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="106">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.irelease(string, string, string, string, string, string, string)' could contain the following variables 'ord_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="145">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.irelease(string, string, string, string, string, string, string)' could contain the following variables 'ord_id', 'ut_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="114">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.irelease(string, string, string, string, string, string, string)' could contain the following variables 'sdr["fuac_id"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="152">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.irelease(string, string, string, string, string, string, string)' could contain the following variables 'ut_id', 'ord_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Login(System.String,System.String,RoyalCrypto.Verification)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="277">Object 'reader' can be disposed more than once in method 'Service1.Login(string, string, Verification)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 277</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="233">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Login(string, string, Verification)' could contain the following variables 'email'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="262">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Login(string, string, Verification)' could contain the following variables 'new string[7][1]', 'fcm.message', 'reader["uac_id"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Logout(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="294">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Logout(string)' could contain the following variables 'new string[5][1]', 'email'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Select_DashBoard(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="679">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Select_DashBoard(string)' could contain the following variables 'fuac_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Select_SupportTicket(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="490">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Select_SupportTicket(string)' could contain the following variables 'st_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Select_TradeDetail(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="546">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Select_TradeDetail(string, string)' could contain the following variables 'uac_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Select_TradeOrder(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1174">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Select_TradeOrder(string)' could contain the following variables 'Fut_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Select_UserAccount(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="420">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Select_UserAccount(string)' could contain the following variables 'uac_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Select_UserChat(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="565">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Select_UserChat(string)' could contain the following variables 'ucht_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Select_UserDocument(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1389">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Select_UserDocument(string)' could contain the following variables 'ud_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Select_UserOrder(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1132">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Select_UserOrder(string)' could contain the following variables 'ord'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Select_UserOrderSingle(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1092">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Select_UserOrderSingle(string)' could contain the following variables 'ord'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Select_UserPaymentDetail(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="592">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Select_UserPaymentDetail(string)' could contain the following variables 'upida'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Select_UserPaymentDetailSingle(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="622">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Select_UserPaymentDetailSingle(string)' could contain the following variables 'upida'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Select_UserTrades(System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="712">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Select_UserTrades(string, string, string)' could contain the following variables 'ordertype', 'currencytype', 'Fuacid'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="752">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Select_UserTrades(string, string, string)' could contain the following variables 'ordertype', 'currencytype', 'Fuacid'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="724">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Select_UserTrades(string, string, string)' could contain the following variables 'uacid'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#tradestatuschange(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1026">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.tradestatuschange(string)' could contain the following variables 'ut_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1042">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.tradestatuschange(string)' could contain the following variables 'ut_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Update_UserAccount(System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="469">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Update_UserAccount(string, string, string, string, string)' could contain the following variables 'fname', 'lname', 'this.encryptpass(password)', 'terms', 'Convert.ToInt32(uac_id)'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Update_UserOrder(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1367">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Update_UserOrder(string, string)' could contain the following variables 'status', 'Convert.ToInt32(ordid)'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Update_UserTrades(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="1351">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.Update_UserTrades(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables 'ordertype', 'amnt', 'pric', 'fes', 'uplimit', 'lowlimit', 'deadlin', 'currencytyp', 'stat', 'Convert.ToInt32(utid)', 'Convert.ToInt32(fuacid)', 'Convert.ToInt32(fupid)'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#updatelogintime(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="52">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.updatelogintime(string)' could contain the following variables 'new string[5][1]', 'fuac_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#updatetradestatus(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="38">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.updatetradestatus(string, int)' could contain the following variables 'new string[5][1]', 'fuac_id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UserCancel_Order(System.String,RoyalCrypto.UserCancelOrder)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="859">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.UserCancel_Order(string, UserCancelOrder)' could contain the following variables 'res', 'uco.FUT_Id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="811">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.UserCancel_Order(string, UserCancelOrder)' could contain the following variables 'sdr["fuac_id"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="803">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.UserCancel_Order(string, UserCancelOrder)' could contain the following variables 'uco.FORD_Id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="862">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.UserCancel_Order(string, UserCancelOrder)' could contain the following variables 'uco.FORD_Id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="796">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.UserCancel_Order(string, UserCancelOrder)' could contain the following variables 'uco.FORD_Id', 'uco.FUserId', 'uco.FUT_Id', 'uco.FTrade_UserId', 'uco.Message', 'uco.FUT_Id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="835">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.UserCancel_Order(string, UserCancelOrder)' could contain the following variables 'uco.FTrade_UserId'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#userorder_dispute(RoyalCrypto.UserOrderDispute)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="959">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.userorder_dispute(UserOrderDispute)' could contain the following variables 'sdr["fuac_id"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="951">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.userorder_dispute(UserOrderDispute)' could contain the following variables 'uod.FORD_Id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="983">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.userorder_dispute(UserOrderDispute)' could contain the following variables 'uod.UserId'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="938">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.userorder_dispute(UserOrderDispute)' could contain the following variables 'uod.UserId', 'uod.FUT_Id', 'uod.FORD_Id', 'uod.FUAC_Id', 'uod.Message', 'uod.Image'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UserOrder_Pay(RoyalCrypto.UserOrderPay)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="898">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.UserOrder_Pay(UserOrderPay)' could contain the following variables 'sdr["fuac_id"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="888">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.UserOrder_Pay(UserOrderPay)' could contain the following variables 'uop.FUT_Id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="885">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.UserOrder_Pay(UserOrderPay)' could contain the following variables 'uop.UserId', 'uop.FUT_Id', 'uop.FORD_Id', 'uop.FUAC_Id', 'uop.Image'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#VerifyEmail(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-10-06 13:47:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="306">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.VerifyEmail(string, string)' could contain the following variables 'uacid'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\API\RoyalCrypto" File="Service1.svc.cs" Line="314">The query string passed to 'SqlCommand.SqlCommand(string, SqlConnection)' in 'Service1.VerifyEmail(string, string)' could contain the following variables 'uacid'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202">
+   <Name>Do not dispose objects multiple times</Name>
+   <Description>A correctly implemented Dispose method can be called multiple times without throwing an exception. However, this is not guaranteed and to avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.</Description>
+   <Resolution Name="Default">Object {0} can be disposed more than once in method {1}. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1453</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182334(VS.100).aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="11.0.0.0" />
+  </Rule>
+  <Rule TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100">
+   <Name>Review SQL queries for security vulnerabilities</Name>
+   <Description>A SQL command string built from user input is vulnerable to SQL injection attacks. Microsoft SQL Server and other database servers support stored procedures and parameterized SQL queries, which reduce the risk of injection attacks.</Description>
+   <Resolution Name="WithNonLiterals">The query string passed to {0} in {1} could contain the following variables {2}. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182310(VS.100).aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="11.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>
