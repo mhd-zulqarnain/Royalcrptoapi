@@ -73,13 +73,13 @@ namespace RoyalCrypto
 
         }
 
-        public Verification irelease(string ord_id, string utfee, string utamount, string uobitamount, string uoamount, string ut_id)
+        public Verification irelease(string ord_id, string utfee, string utamount, string uobitamount, string uoamount, string ut_id, string user_uid)
         {
             decimal damnt = Convert.ToDecimal(utfee);
             decimal dfees = Convert.ToDecimal(utamount);
 
             decimal dividevalue = dfees / damnt;
-
+            updatetradestatus(user_uid, 1);
 
             decimal FBitAmount = Convert.ToDecimal(uobitamount);
             decimal ExFee = dividevalue * FBitAmount;
@@ -246,7 +246,7 @@ namespace RoyalCrypto
 
                         if (email == checker && pass == enter)
                         {
-                            cmd = new SqlCommand("update UserAccount set LoginDate = convert(datetime,'" + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + "',103), StatusOnline = 1, fcm_token = '"+fcm.message+"' where uac_id = '"+uac_id+"'", connect);
+                            cmd = new SqlCommand("update UserAccount set LoginDate = convert(datetime,'" + DateTime.UtcNow.Add(new TimeSpan(5, 0, 0)).ToString("dd-MM-yyyy HH:mm:ss") + "',103), StatusOnline = 1, fcm_token = '" + fcm.message + "' where uac_id = '" + uac_id + "'", connect);
                             cmd.CommandType = CommandType.Text;
                             cmd.ExecuteNonQuery();
                             return new Verification("success", uac_id + " " + isphonenumactive.ToString() + " " + phone);
@@ -278,7 +278,7 @@ namespace RoyalCrypto
             if (connect.State != ConnectionState.Open)
                 connect.Open();
 
-            SqlCommand cmd = new SqlCommand("update UserAccount set LogoutDate = convert(datetime,'" + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + "',103), StatusOnline = 0 where Email = '" + email + "'", connect);
+            SqlCommand cmd = new SqlCommand("update UserAccount set LogoutDate = convert(datetime,'" + DateTime.UtcNow.Add(new TimeSpan(5, 0, 0)).ToString("dd-MM-yyyy HH:mm:ss") + "',103), StatusOnline = 0 where Email = '" + email + "'", connect);
             cmd.CommandType = CommandType.Text;
             cmd.ExecuteNonQuery();
 
@@ -628,7 +628,7 @@ namespace RoyalCrypto
         {
 
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
-            SqlCommand cmd = new SqlCommand("insert into UserTrades values ('" + Convert.ToInt32(fuacid) + "','" + ordertype + "','" + Convert.ToInt32(fupid) + "','" + amnt + "','" + exec_amount + "','" + exec_fees + "','" + pric + "','" + fes + "','" + uplimit + "','" + lowlimit + "','" + currencytyp + "', 1 ,convert(datetime,'" + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + "',103))", connect);
+            SqlCommand cmd = new SqlCommand("insert into UserTrades values ('" + Convert.ToInt32(fuacid) + "','" + ordertype + "','" + Convert.ToInt32(fupid) + "','" + amnt + "','" + exec_amount + "','" + exec_fees + "','" + pric + "','" + fes + "','" + uplimit + "','" + lowlimit + "','" + currencytyp + "', 1 ,convert(datetime,'" + DateTime.UtcNow.Add(new TimeSpan(5, 0, 0)).ToString("dd-MM-yyyy HH:mm:ss") + "',103))", connect);
             cmd.CommandType = CommandType.Text;
             if (connect.State != ConnectionState.Open)
             {
@@ -705,7 +705,7 @@ namespace RoyalCrypto
 
             //    DateTime val = Convert.ToDateTime(DateTime.UtcNow.Add(new TimeSpan(4, 44, 0)).ToString("dd-MM-yyyy HH:mm:ss"));
                     DateTime logindate = Convert.ToDateTime(sdr["logindate"].ToString());
-                    DateTime currenttime = Convert.ToDateTime(DateTime.UtcNow.Add(new TimeSpan(5, 0, 0)).ToString("dd-MM-yyyy HH:mm:ss"));
+                    DateTime currenttime = Convert.ToDateTime(DateTime.UtcNow.Add(new TimeSpan(5, 0, 0)));
                         
                 TimeSpan check = currenttime.Subtract(logindate);
                  

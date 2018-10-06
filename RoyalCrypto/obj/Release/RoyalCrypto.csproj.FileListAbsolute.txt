@@ -41,3 +41,27 @@ C:\Users\Abdul Basit\Desktop\RoyalCrypto\RoyalCrypto\bin\normnfkd.nlp
 C:\Users\Abdul Basit\Desktop\RoyalCrypto\RoyalCrypto\obj\Release\RoyalCrypto.csprojResolveAssemblyReference.cache
 C:\Users\Abdul Basit\Desktop\RoyalCrypto\RoyalCrypto\obj\Release\RoyalCrypto.dll
 C:\Users\Abdul Basit\Desktop\RoyalCrypto\RoyalCrypto\obj\Release\RoyalCrypto.pdb
+D:\API\RoyalCrypto\bin\ApplicationInsights.config
+D:\API\RoyalCrypto\bin\RoyalCrypto.dll
+D:\API\RoyalCrypto\bin\RoyalCrypto.pdb
+D:\API\RoyalCrypto\bin\Microsoft.AI.Agent.Intercept.dll
+D:\API\RoyalCrypto\bin\Microsoft.AI.DependencyCollector.dll
+D:\API\RoyalCrypto\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\API\RoyalCrypto\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\API\RoyalCrypto\bin\Microsoft.AI.Web.dll
+D:\API\RoyalCrypto\bin\Microsoft.AI.WindowsServer.dll
+D:\API\RoyalCrypto\bin\Microsoft.ApplicationInsights.dll
+D:\API\RoyalCrypto\bin\mscorlib.dll
+D:\API\RoyalCrypto\bin\Microsoft.AI.DependencyCollector.xml
+D:\API\RoyalCrypto\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\API\RoyalCrypto\bin\Microsoft.AI.Web.xml
+D:\API\RoyalCrypto\bin\Microsoft.AI.WindowsServer.xml
+D:\API\RoyalCrypto\bin\Microsoft.ApplicationInsights.xml
+D:\API\RoyalCrypto\bin\normidna.nlp
+D:\API\RoyalCrypto\bin\normnfc.nlp
+D:\API\RoyalCrypto\bin\normnfd.nlp
+D:\API\RoyalCrypto\bin\normnfkc.nlp
+D:\API\RoyalCrypto\bin\normnfkd.nlp
+D:\API\RoyalCrypto\obj\Release\RoyalCrypto.csprojResolveAssemblyReference.cache
+D:\API\RoyalCrypto\obj\Release\RoyalCrypto.dll
+D:\API\RoyalCrypto\obj\Release\RoyalCrypto.pdb

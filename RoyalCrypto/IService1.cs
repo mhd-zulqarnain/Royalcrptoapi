@@ -17,8 +17,8 @@ namespace RoyalCrypto
         [WebInvoke(Method = "POST",
       RequestFormat = WebMessageFormat.Json,
       ResponseFormat = WebMessageFormat.Json,
-      UriTemplate = "irelease/{ord_id}/{utfee}/{utamount}/{uobitamount}/{uoamount}/{ut_id}")]
-        Verification irelease(string ord_id, string utfee, string utamount, string uobitamount, string uoamount, string ut_id);
+      UriTemplate = "irelease/{ord_id}/{utfee}/{utamount}/{uobitamount}/{uoamount}/{ut_id}/{user_uid}")]
+        Verification irelease(string ord_id, string utfee, string utamount, string uobitamount, string uoamount, string ut_id, string user_uid);
 
 
         [OperationContract]
