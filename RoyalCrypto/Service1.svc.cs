@@ -905,7 +905,7 @@ namespace RoyalCrypto
 
 
                 var webClient = new WebClient();
-                string type = "paid,"+uop.UOP_Id;
+                string type = "paid," + uop.FORD_Id;
                 string msg = "Order paid";
                 string key = fcm;
                 if (key == "")
