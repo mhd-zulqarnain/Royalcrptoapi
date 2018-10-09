@@ -709,7 +709,7 @@ namespace RoyalCrypto
             if (connect.State != ConnectionState.Open)
                 connect.Open();
 
-            SqlCommand cmd = new SqlCommand("select FUAC_Id from UserTrades where ordertype = '" + ordertype + "' and currencytype = '" + currencytype + "' and status!=0 and fuac_id !='" + Fuacid + "' ", connect);
+            SqlCommand cmd = new SqlCommand("select FUAC_Id from UserTrades where ordertype = '" + ordertype + "' and currencytype = '" + currencytype + "' and status!=0 ", connect);
             SqlDataReader sdr = cmd.ExecuteReader();
             while (sdr.Read())
             {
@@ -749,7 +749,7 @@ namespace RoyalCrypto
             }
             List<UserTrades> list = new List<UserTrades>();
             int i = 0;
-             cmd = new SqlCommand("select * from UserTrades where ordertype = '" + ordertype + "' and currencytype = '" + currencytype + "' and status!=0 and fuac_id !='"+Fuacid+"' ", connect);
+             cmd = new SqlCommand("select * from UserTrades where ordertype = '" + ordertype + "' and currencytype = '" + currencytype + "' and status!=0 ", connect);
              sdr = cmd.ExecuteReader();
             while (sdr.Read())
             {
