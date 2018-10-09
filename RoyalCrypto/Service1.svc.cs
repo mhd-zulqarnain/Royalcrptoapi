@@ -24,22 +24,35 @@ namespace RoyalCrypto
 
         public void updatetradestatus(string fuac_id,int status){
 
-            SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
-            if (connect.State != ConnectionState.Open) ;
-            connect.Open();
-            SqlCommand cmds;
+            
             if (status == 1)
             {
-                cmds = new SqlCommand("update useraccount set logindate = convert(datetime,'" + DateTime.UtcNow.Add(new TimeSpan(5,0,0)).ToString("dd-MM-yyyy HH:mm:ss") + "',103), StatusOnline = 1 where uac_id = '" + fuac_id + "' ", connect);
-            }else
+                //cmds = new SqlCommand("update useraccount set logindate = convert(datetime,'" + DateTime.UtcNow.Add(new TimeSpan(5,0,0)).ToString("dd-MM-yyyy HH:mm:ss") + "',103), StatusOnline = 1 where uac_id = '" + fuac_id + "' ", connect);
+            }
+            else
+            {
+                SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
+            if (connect.State != ConnectionState.Open)
+                connect.Open();
+                SqlCommand cmds;
                 cmds = new SqlCommand("update useraccount set logoutdate = convert(datetime,'" + DateTime.UtcNow.Add(new TimeSpan(5, 0, 0)).ToString("dd-MM-yyyy HH:mm:ss") + "',103), StatusOnline = 0 where uac_id = '" + fuac_id + "' ", connect);
                 cmds.ExecuteNonQuery();
-
-            connect.Close();
+                connect.Close();
+            }
+           
 
         }
 
-
+        public void updatelogintime(string fuac_id)
+        {
+                SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
+                if (connect.State != ConnectionState.Open)
+                    connect.Open();
+                SqlCommand cmds;
+                cmds = new SqlCommand("update useraccount set LoginDate = convert(datetime,'" + DateTime.UtcNow.Add(new TimeSpan(5, 0, 0)).ToString("dd-MM-yyyy HH:mm:ss") + "',103), StatusOnline = 1 where uac_id = '" + fuac_id + "' ", connect);
+                cmds.ExecuteNonQuery();
+                connect.Close();
+        }
         public Verification forgot_pass(string Email)
         {
 
@@ -73,13 +86,13 @@ namespace RoyalCrypto
 
         }
 
-        public Verification irelease(string ord_id, string utfee, string utamount, string uobitamount, string uoamount, string ut_id)
+        public Verification irelease(string ord_id, string utfee, string utamount, string uobitamount, string uoamount, string ut_id, string user_uid)
         {
             decimal damnt = Convert.ToDecimal(utfee);
             decimal dfees = Convert.ToDecimal(utamount);
 
             decimal dividevalue = dfees / damnt;
-
+            updatelogintime(user_uid);
 
             decimal FBitAmount = Convert.ToDecimal(uobitamount);
             decimal ExFee = dividevalue * FBitAmount;
@@ -246,7 +259,7 @@ namespace RoyalCrypto
 
                         if (email == checker && pass == enter)
                         {
-                            cmd = new SqlCommand("update UserAccount set LoginDate = convert(datetime,'" + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + "',103), StatusOnline = 1, fcm_token = '"+fcm.message+"' where uac_id = '"+uac_id+"'", connect);
+                            cmd = new SqlCommand("update UserAccount set LoginDate = convert(datetime,'" + DateTime.UtcNow.Add(new TimeSpan(5, 0, 0)).ToString("dd-MM-yyyy HH:mm:ss") + "',103), StatusOnline = 1, fcm_token = '" + fcm.message + "' where uac_id = '" + uac_id + "'", connect);
                             cmd.CommandType = CommandType.Text;
                             cmd.ExecuteNonQuery();
                             return new Verification("success", uac_id + " " + isphonenumactive.ToString() + " " + phone);
@@ -278,7 +291,7 @@ namespace RoyalCrypto
             if (connect.State != ConnectionState.Open)
                 connect.Open();
 
-            SqlCommand cmd = new SqlCommand("update UserAccount set LogoutDate = convert(datetime,'" + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + "',103), StatusOnline = 0 where Email = '" + email + "'", connect);
+            SqlCommand cmd = new SqlCommand("update UserAccount set LogoutDate = convert(datetime,'" + DateTime.UtcNow.Add(new TimeSpan(5, 0, 0)).ToString("dd-MM-yyyy HH:mm:ss") + "',103), StatusOnline = 0 where Email = '" + email + "'", connect);
             cmd.CommandType = CommandType.Text;
             cmd.ExecuteNonQuery();
 
@@ -450,6 +463,8 @@ namespace RoyalCrypto
 
         public Verification Update_UserAccount(string uac_id, string fname, string lname, string password, string terms)
         {
+            updatelogintime(uac_id);
+
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
             SqlCommand cmd = new SqlCommand("update UserAccount set FirstName = '" + fname + "', LastName = '" + lname + "',Password = '" + encryptpass(password) + "',Terms = '" + terms + "' where UAC_Id = '" + Convert.ToInt32(uac_id) + "'", connect);
 
@@ -495,6 +510,7 @@ namespace RoyalCrypto
 
         public string Add_SupportTicket(SupportTicket st)
         {
+            updatelogintime(st.FUAC_Id);
 
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
             SqlCommand cmd = new SqlCommand("insert into SupportTicket values ('" + st.Title + "','" + st.Description + "','" + st.Image + "','" + st.FUAC_Id + "')", connect);
@@ -521,6 +537,8 @@ namespace RoyalCrypto
 
         public TradeDetail Select_TradeDetail(string uac_id, string up_id)
         {
+            //updatelogintime(uac_id);
+
             UserPaymentDetail s = Select_UserPaymentDetailSingle(up_id);
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
             if (connect.State != ConnectionState.Open)
@@ -565,6 +583,8 @@ namespace RoyalCrypto
 
         public List<UserPaymentDetail> Select_UserPaymentDetail(string upida)
         {
+            updatelogintime(upida);
+
             List<UserPaymentDetail> list = new List<UserPaymentDetail>();
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
             if (connect.State != ConnectionState.Open)
@@ -626,9 +646,9 @@ namespace RoyalCrypto
         public Verification Add_UserTrades(string fuacid, string ordertype, string fupid, string amnt, string exec_amount, string exec_fees, string pric, string fes, string uplimit,
                              string lowlimit, string currencytyp)
         {
-
+            updatelogintime(fuacid);
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
-            SqlCommand cmd = new SqlCommand("insert into UserTrades values ('" + Convert.ToInt32(fuacid) + "','" + ordertype + "','" + Convert.ToInt32(fupid) + "','" + amnt + "','" + exec_amount + "','" + exec_fees + "','" + pric + "','" + fes + "','" + uplimit + "','" + lowlimit + "','" + currencytyp + "', 1 ,convert(datetime,'" + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + "',103))", connect);
+            SqlCommand cmd = new SqlCommand("insert into UserTrades values ('" + Convert.ToInt32(fuacid) + "','" + ordertype + "','" + Convert.ToInt32(fupid) + "','" + amnt + "','" + exec_amount + "','" + exec_fees + "','" + pric + "','" + fes + "','" + uplimit + "','" + lowlimit + "','" + currencytyp + "', 1 ,convert(datetime,'" + DateTime.UtcNow.Add(new TimeSpan(5, 0, 0)).ToString("dd-MM-yyyy HH:mm:ss") + "',103))", connect);
             cmd.CommandType = CommandType.Text;
             if (connect.State != ConnectionState.Open)
             {
@@ -650,6 +670,8 @@ namespace RoyalCrypto
         }
         public List<UserTrades> Select_DashBoard(string fuac_id)
         {
+            updatelogintime(fuac_id);
+
             List<UserTrades> list = new List<UserTrades>();
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
             if (connect.State != ConnectionState.Open)
@@ -687,7 +709,7 @@ namespace RoyalCrypto
             if (connect.State != ConnectionState.Open)
                 connect.Open();
 
-            SqlCommand cmd = new SqlCommand("select FUAC_Id from UserTrades where ordertype = '" + ordertype + "' and currencytype = '" + currencytype + "' and status!=0 and fuac_id !='" + Fuacid + "' ", connect);
+            SqlCommand cmd = new SqlCommand("select FUAC_Id from UserTrades where ordertype = '" + ordertype + "' and currencytype = '" + currencytype + "' and status!=0 ", connect);
             SqlDataReader sdr = cmd.ExecuteReader();
             while (sdr.Read())
             {
@@ -705,7 +727,7 @@ namespace RoyalCrypto
 
             //    DateTime val = Convert.ToDateTime(DateTime.UtcNow.Add(new TimeSpan(4, 44, 0)).ToString("dd-MM-yyyy HH:mm:ss"));
                     DateTime logindate = Convert.ToDateTime(sdr["logindate"].ToString());
-                    DateTime currenttime = Convert.ToDateTime(DateTime.UtcNow.Add(new TimeSpan(5, 0, 0)).ToString("dd-MM-yyyy HH:mm:ss"));
+                    DateTime currenttime = Convert.ToDateTime(DateTime.UtcNow.Add(new TimeSpan(5, 0, 0)));
                         
                 TimeSpan check = currenttime.Subtract(logindate);
                  
@@ -727,7 +749,7 @@ namespace RoyalCrypto
             }
             List<UserTrades> list = new List<UserTrades>();
             int i = 0;
-             cmd = new SqlCommand("select * from UserTrades where ordertype = '" + ordertype + "' and currencytype = '" + currencytype + "' and status!=0 and fuac_id !='"+Fuacid+"' ", connect);
+             cmd = new SqlCommand("select * from UserTrades where ordertype = '" + ordertype + "' and currencytype = '" + currencytype + "' and status!=0 ", connect);
              sdr = cmd.ExecuteReader();
             while (sdr.Read())
             {
@@ -758,7 +780,9 @@ namespace RoyalCrypto
 
         public string UserCancel_Order(string amo, UserCancelOrder uco)
         {
+            string uid = uco.FUserId.Substring(2, uco.FUserId.Length - 2);
 
+            updatelogintime(uid);
            // uco.FORD_Id;
            // UserOrder y;
            // y.FUAC_Id;
@@ -772,7 +796,6 @@ namespace RoyalCrypto
             SqlCommand cmd = new SqlCommand("insert into UserCancelOrder (FORD_Id, FUserId, FUT_Id, FTrade_UserId, Message) values('" + uco.FORD_Id + "','" + uco.FUserId + "','" + uco.FUT_Id + "','" + uco.FTrade_UserId + "','" + uco.Message + "') select amount from usertrades where ut_id = '" + uco.FUT_Id + "' ", connect);
             try
             {
-                string uid = uco.FUserId.Substring(2 , uco.FUserId.Length - 2);
                 string tid = uco.FTrade_UserId.Substring(2, uco.FTrade_UserId.Length-2);
 
                 if (uid == tid)
@@ -854,11 +877,12 @@ namespace RoyalCrypto
 
         public string UserOrder_Pay(UserOrderPay uop)
         {
-           
+            updatelogintime(uop.FUAC_Id);
+
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
             if (connect.State != ConnectionState.Open)
                 connect.Open();
-            SqlCommand cmd = new SqlCommand("insert into UserOrderPay (UserId, FUT_Id, FUAC_Id, Image) values('" + uop.UserId + "','" + uop.FUT_Id + "','" + uop.FUAC_Id + "','" + uop.Image + "')", connect);
+            SqlCommand cmd = new SqlCommand("insert into UserOrderPay (UserId, FUT_Id, FORD_Id, FUAC_Id, Image) values('" + uop.UserId + "','" + uop.FUT_Id + "','"+uop.FORD_Id+"','" + uop.FUAC_Id + "','" + uop.Image + "')", connect);
             try
             {
                 SqlCommand query = new SqlCommand("select fuac_id from usertrades where ut_id = '" + uop.FUT_Id + "' ", connect);
@@ -881,7 +905,7 @@ namespace RoyalCrypto
 
 
                 var webClient = new WebClient();
-                string type = "paid,"+uop.UOP_Id;
+                string type = "paid," + uop.FORD_Id;
                 string msg = "Order paid";
                 string key = fcm;
                 if (key == "")
@@ -905,6 +929,8 @@ namespace RoyalCrypto
 
         public string userorder_dispute(UserOrderDispute uod)
         {
+            string tid = uod.FUAC_Id.Substring(2, uod.FUAC_Id.Length - 2);
+            updatelogintime(tid);
 
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
             if (connect.State != ConnectionState.Open)
@@ -914,7 +940,7 @@ namespace RoyalCrypto
             {
 
                // string uid = uod.UserId;
-                string tid = uod.FUAC_Id.Substring(2, uod.FUAC_Id.Length - 2);
+             
 
 
                 string uid = uod.UserId.Substring(2, uod.UserId.Length - 2);
@@ -1188,7 +1214,7 @@ namespace RoyalCrypto
 
             decimal Amount = amt - bamt;
 
-
+            updatelogintime(fuac_id);
 
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
             SqlCommand cmd = new SqlCommand("insert into UserOrder values ('" + userid + "','" + ord_userid + "','" + fuac_id + "','" + Convert.ToInt32(fut_id) + "','" + price + "','" + amount + "','" + payment_method + "','" + upperlimit + "','" + lowerlimit + "','" + bitamount + "','" + bitprice + "','" + status + "',convert(datetime,'" + DateTime.UtcNow.Add(new TimeSpan(5, 0, 0)).ToString("dd-MM-yyyy HH:mm:ss") + "',103),convert(datetime,'" + DateTime.UtcNow.Add(new TimeSpan(11, 0, 0)).ToString("dd-MM-yyyy HH:mm:ss") + "',103),'" + description + "','" + notify_status + "') select @@identity as iden ", connect);
@@ -1242,6 +1268,7 @@ namespace RoyalCrypto
 
         public UserPaymentDetail Add_UserPaymentDetail(string fuac_id, string type, string account, string account_title, string bankname, string Bankcode)
         {
+            updatelogintime(fuac_id);
 
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
             SqlCommand cmd = new SqlCommand("insert into UserPaymentDetail values ('" + Convert.ToInt32(fuac_id) + "','" + type + "','" + account + "','" + account_title + "','" + bankname + "','" + Bankcode + "') select @@identity as iden", connect);
@@ -1377,6 +1404,7 @@ namespace RoyalCrypto
 
         public Verification Add_UserDocument(string FUAC_id, string UserDocument)
         {
+            updatelogintime(FUAC_id);
 
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
             SqlCommand cmd = new SqlCommand("insert into UserDocument values ('" + Convert.ToInt32(FUAC_id) + "','" + UserDocument + "')", connect);
@@ -1403,6 +1431,8 @@ namespace RoyalCrypto
 
         public Verification Delete_UserPaymentDetail(string upid)
         {
+           
+
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
             SqlCommand cmd = new SqlCommand("delete from UserPaymentDetail where UP_Id = '" + Convert.ToInt32(upid) + "' ", connect);
 
