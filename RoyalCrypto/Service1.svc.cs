@@ -88,6 +88,7 @@ namespace RoyalCrypto
 
         public Verification irelease(string ord_id, string utfee, string utamount, string uobitamount, string uoamount, string ut_id, string user_uid)
         {
+
             decimal damnt = Convert.ToDecimal(utfee);
             decimal dfees = Convert.ToDecimal(utamount);
 
@@ -102,6 +103,22 @@ namespace RoyalCrypto
             connect.Open();
             try
             {
+
+                SqlCommand sql = new SqlCommand("select FUT_Id from UserOrder where Ord_id = "+ord_id,connect);
+           
+                SqlDataReader s = sql.ExecuteReader();
+                s.Read();
+                 ut_id = s["FUT_Id"].ToString();
+                s.Close();
+
+                sql = new SqlCommand("select from UserTrades where ut_id = " + ut_id, connect);
+                s = sql.ExecuteReader();
+                s.Read();
+                utfee = s["Fees"].ToString();
+                utamount = s["Amount"].ToString();
+                s.Close();
+
+          
 
                 SqlCommand query = new SqlCommand("select fuac_id from userorder where ord_id = '" + ord_id + "'  ", connect);
                 query.ExecuteNonQuery();
