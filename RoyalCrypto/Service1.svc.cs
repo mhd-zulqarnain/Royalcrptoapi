@@ -893,8 +893,10 @@ namespace RoyalCrypto
 
         }
 
-        public string UserOrder_Pay(UserOrderPay uop)
+        public string UserOrder_Pay(string userid,UserOrderPay uop)
         {
+
+           
             updatelogintime(uop.FUAC_Id);
 
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
@@ -903,6 +905,7 @@ namespace RoyalCrypto
             SqlCommand cmd = new SqlCommand("insert into UserOrderPay (UserId, FUT_Id, FORD_Id, FUAC_Id, Image) values('" + uop.UserId + "','" + uop.FUT_Id + "','"+uop.FORD_Id+"','" + uop.FUAC_Id + "','" + uop.Image + "')", connect);
             try
             {
+                cmd.ExecuteNonQuery();
                 SqlCommand query = new SqlCommand("select fuac_id from usertrades where ut_id = '" + uop.FUT_Id + "' ", connect);
                 query.ExecuteNonQuery();
                 SqlDataReader sdr = query.ExecuteReader();
@@ -910,29 +913,34 @@ namespace RoyalCrypto
 
                 string fuacid = sdr["fuac_id"].ToString();
                sdr.Close();
+                // fuacid === trade id
+                // uop.fuac_id === order id
 
-                //uop.FUAC_Id;
-            
-                query = new SqlCommand("select fcm_token from useraccount where uac_id = '" + fuacid + "' ", connect);
-                query.ExecuteNonQuery();
-                SqlDataReader sdrs = query.ExecuteReader();
-                sdrs.Read();
+                if (userid != uop.FUAC_Id)
+                {
+                    
+                    //uop.FUAC_Id;
 
-                string fcm = sdrs["fcm_token"].ToString();
-                sdrs.Close();
+                    query = new SqlCommand("select fcm_token from useraccount where uac_id = '" + fuacid + "' ", connect);
+                    query.ExecuteNonQuery();
+                    SqlDataReader sdrs = query.ExecuteReader();
+                    sdrs.Read();
 
-
-                var webClient = new WebClient();
-                string type = "paid," + uop.FORD_Id;
-                string msg = "Order paid";
-                string key = fcm;
-                if (key == "")
-                    key = "a";
-                webClient.DownloadString("http://royalcryptoexchange.com/pushapi.php?send_notification&msg=" + msg + "&type=" + type + "&token=" + key);
+                    string fcm = sdrs["fcm_token"].ToString();
+                    sdrs.Close();
 
 
+                    var webClient = new WebClient();
+                    string type = "paid," + uop.FORD_Id;
+                    string msg = "Order paid";
+                    string key = fcm;
+                    if (key == "")
+                        key = "a";
+                    webClient.DownloadString("http://royalcryptoexchange.com/pushapi.php?send_notification&msg=" + msg + "&type=" + type + "&token=" + key);
 
-                cmd.ExecuteNonQuery();
+
+                }
+               
                 connect.Close();
                 return "success";
 

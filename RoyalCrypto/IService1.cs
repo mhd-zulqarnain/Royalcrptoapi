@@ -290,8 +290,8 @@ namespace RoyalCrypto
         [WebInvoke(Method = "POST",
           RequestFormat = WebMessageFormat.Json,
           ResponseFormat = WebMessageFormat.Json,
-          UriTemplate = "UserOrder_Pay")]
-        string UserOrder_Pay(UserOrderPay uop);
+          UriTemplate = "UserOrder_Pay/{id}")]
+        string UserOrder_Pay(string id,UserOrderPay uop);
 
         [OperationContract]
         [WebInvoke(Method = "POST",
