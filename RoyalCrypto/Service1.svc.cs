@@ -89,15 +89,7 @@ namespace RoyalCrypto
         public Verification irelease(string ord_id, string utfee, string utamount, string uobitamount, string uoamount, string ut_id, string user_uid)
         {
 
-            decimal damnt = Convert.ToDecimal(utfee);
-            decimal dfees = Convert.ToDecimal(utamount);
-
-            decimal dividevalue = dfees / damnt;
-            updatelogintime(user_uid);
-
-            decimal FBitAmount = Convert.ToDecimal(uobitamount);
-            decimal ExFee = dividevalue * FBitAmount;
-
+           
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
             if (connect.State != ConnectionState.Open) ;
             connect.Open();
@@ -111,14 +103,23 @@ namespace RoyalCrypto
                  ut_id = s["FUT_Id"].ToString();
                 s.Close();
 
-                sql = new SqlCommand("select from UserTrades where ut_id = " + ut_id, connect);
+                sql = new SqlCommand("select Fees,Amount from UserTrades where ut_id = " + ut_id, connect);
                 s = sql.ExecuteReader();
                 s.Read();
                 utfee = s["Fees"].ToString();
                 utamount = s["Amount"].ToString();
                 s.Close();
 
-          
+                decimal damnt = Convert.ToDecimal(utfee);
+                decimal dfees = Convert.ToDecimal(utamount);
+
+                decimal dividevalue = dfees / damnt;
+                updatelogintime(user_uid);
+
+                decimal FBitAmount = Convert.ToDecimal(uobitamount);
+                decimal ExFee = dividevalue * FBitAmount;
+
+
 
                 SqlCommand query = new SqlCommand("select fuac_id from userorder where ord_id = '" + ord_id + "'  ", connect);
                 query.ExecuteNonQuery();
