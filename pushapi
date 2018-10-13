@@ -17,14 +17,14 @@ define( 'API_ACCESS_KEY', 'AAAAYNKGF2w:APA91bFjRydtV273KV1TG-hX3xyWNrQqlWrDMobpv
 #prep the bundle
      $msg = array
           (
-		'body' 	=> $_GET['msg'],
-		'title'	=> $_GET['type'],
-             	
+		'body' 	=> $_GET['type'],
+		'title'	=> $_GET['msg'],
+        'test'	=> ",test"
           );
 	$fields = array
 			(
 				'to'		=> $_REQUEST['token'],
-				'notification'	=> $msg
+			    'data' => $msg
 			);
 	
 	
